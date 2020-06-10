@@ -1,13 +1,13 @@
 package com.example.demo.restcontroller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.Optional;
+import java.util.TimeZone;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,11 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.TicketRepo;
 import com.example.demo.dao.loginRepo;
-import com.example.demo.model.Login;
 import com.example.demo.model.Ticket;
 import com.example.demo.service.ResourceNotFoundException;
-
-import javassist.expr.NewArray;
 
 @Controller
 @CrossOrigin(origins = "*")
@@ -47,13 +44,20 @@ public class TicketController {
 	@ResponseBody
     public Ticket raiseTicket(@PathVariable (value = "empid") String empid,
                                  @Validated @RequestBody Ticket ticket) {
-        return loginRepo.findById(empid).map(user -> {
+		
+		Date date=new Date();
+		DateFormat dateFormat = new SimpleDateFormat("MMyyyyHHddmmss");
+		dateFormat.setTimeZone(TimeZone.getTimeZone("IST"));
+        
+		
+		return loginRepo.findById(empid).map(user -> {
             ticket.setUser(user);
+            ticket.setTicketId("OmniS-"+ticket.getUser().getUsername()+"-"+dateFormat.format(date));
             return repo.save(ticket);
         }).orElseThrow(() -> new ResourceNotFoundException("USERID " + empid + " not found"));
     }
 
-	@GetMapping("/get/{empid}/ticket")
+	@GetMapping("/get/{empid}")
 	@ResponseBody
 	public List<Ticket> getTicketsByEmpId(@PathVariable(value = "empid") String empid) {	
 	
