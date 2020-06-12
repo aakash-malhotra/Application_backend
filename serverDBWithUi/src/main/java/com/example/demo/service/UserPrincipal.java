@@ -1,13 +1,16 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.demo.model.Login;
+import com.example.demo.model.Role;
 
 public class UserPrincipal implements UserDetails {
 
@@ -20,7 +23,11 @@ public class UserPrincipal implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return Collections.singleton(new SimpleGrantedAuthority("USER"));
+		List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+		for(Role role : login.getRoles()) {
+			grantedAuthorities.add(new SimpleGrantedAuthority(role.getRoleName()));
+		}
+		return grantedAuthorities;	
 	}
 
 	@Override

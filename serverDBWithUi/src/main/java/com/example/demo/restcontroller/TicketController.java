@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.TicketRepo;
-import com.example.demo.dao.loginRepo;
+import com.example.demo.dao.LoginRepo;
 import com.example.demo.model.Ticket;
 import com.example.demo.service.ResourceNotFoundException;
 
@@ -32,7 +32,7 @@ public class TicketController {
 	TicketRepo repo;
 	
 	@Autowired
-	loginRepo loginRepo;
+	LoginRepo loginRepo;
 	
 	@GetMapping("/getAll")
 	@ResponseBody

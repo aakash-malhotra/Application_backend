@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.model.Login;
 
 @Repository
-public interface loginRepo extends JpaRepository<Login,String>{
+public interface LoginRepo extends JpaRepository<Login,String>{
 
 	public Login findByUsername(String username);
 

@@ -1,13 +1,9 @@
 package com.example.demo.model;
 
 
-import java.util.List;
-import java.util.Set;
-
+import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -16,10 +12,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
 @Table(name = "login_details")
@@ -48,21 +40,21 @@ public class Login {
 	@Column(name="email")
 	private String email;
 	
-/*
+
 	@ManyToMany
 	@JoinTable(name = "user_role",
 				joinColumns = @JoinColumn(name="username"),
 				inverseJoinColumns = @JoinColumn(name="role_id"))
-	private List<Role> roles;
+	private Collection<Role> roles;
 
-	public List<Role> getRoles() {
+	public Collection<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<Role> roles) {
+	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
 	}
-*/
+
 	public String getName() {
 		return name;
 	}

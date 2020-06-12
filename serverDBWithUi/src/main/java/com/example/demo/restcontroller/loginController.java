@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.dao.loginRepo;
+import com.example.demo.dao.LoginRepo;
 import com.example.demo.model.Login;
 import com.example.demo.model.StringResponse;
 
@@ -19,7 +19,7 @@ import com.example.demo.model.StringResponse;
 public class loginController {
 
 	@Autowired
-	loginRepo repo;
+	LoginRepo repo;
 	
 	@GetMapping("/auth")
 	@ResponseBody

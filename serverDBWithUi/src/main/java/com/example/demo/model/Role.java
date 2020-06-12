@@ -1,17 +1,15 @@
-/*
+
 package com.example.demo.model;
  
 
+import java.util.Collection;
 import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -21,12 +19,13 @@ public class Role {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "role_id")
 	private Long roleId;
 	
 	private String roleName;
 	
 	@ManyToMany(mappedBy = "roles")
-	private List<Login> user;
+	private Collection<Login> user;
 
 	public String getRoleName() {
 		return roleName;
@@ -36,7 +35,7 @@ public class Role {
 		this.roleName = roleName;
 	}
 
-	public List<Login> getUser() {
+	public Collection<Login> getUser() {
 		return user;
 	}
 
@@ -49,10 +48,9 @@ public class Role {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Role(String roleName, List<Login> user) {
+	public Role(String roleName) {
 		super();
 		this.roleName = roleName;
-		this.user = user;
 	}
 
 	@Override
@@ -60,6 +58,4 @@ public class Role {
 		return "Role [roleId=" + roleId + ", roleName=" + roleName + ", user=" + user + "]";
 	}
 	
-	
 }
-*/
