@@ -1,18 +1,35 @@
 package com.example.demo.model;
 
+
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
 @Table(name = "login_details")
 public class Login {
 	
-	@Column(name="sno")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
+//	@Column(columnDefinition = "serial",)
+
+	@Generated(GenerationTime.INSERT)
+	@Column( insertable = false,name="sno",updatable = false)
 	private int sno;
 	
 	@Id
@@ -31,6 +48,21 @@ public class Login {
 	@Column(name="email")
 	private String email;
 	
+/*
+	@ManyToMany
+	@JoinTable(name = "user_role",
+				joinColumns = @JoinColumn(name="username"),
+				inverseJoinColumns = @JoinColumn(name="role_id"))
+	private List<Role> roles;
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+*/
 	public String getName() {
 		return name;
 	}
@@ -63,7 +95,7 @@ public class Login {
 		this.username = username;
 	}
 	
-	public String getPassword() {
+	public String string() {
 		return password;
 	}
 	
@@ -80,6 +112,10 @@ public class Login {
 		this.name = name;
 		this.phone = phone;
 		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 
 	@Override

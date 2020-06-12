@@ -46,7 +46,7 @@ public class TicketController {
                                  @Validated @RequestBody Ticket ticket) {
 		
 		Date date=new Date();
-		DateFormat dateFormat = new SimpleDateFormat("MMyyyyHHddmmss");
+		DateFormat dateFormat = new SimpleDateFormat("MMyyHHddmmss");
 		dateFormat.setTimeZone(TimeZone.getTimeZone("IST"));
         
 		

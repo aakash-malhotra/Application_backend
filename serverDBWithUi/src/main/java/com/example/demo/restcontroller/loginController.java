@@ -29,11 +29,26 @@ public class loginController {
 		return resp;
 	}
 	
-	@PostMapping("/adduser")
+	@PostMapping("/users")
 	@ResponseBody
-	public Login addUser(@Validated @RequestBody Login user) {
-		return repo.save(user);
+	public Login addUser(@Validated @RequestBody Login user) throws Exception {
 		
+		String username=user.getUsername();
+		
+		Boolean b =repo.existsById(user.getUsername());
+		
+		if(username!=null && !"".equals(username)) {
+			if(!b) {
+				return repo.save(user);
+			}
+			else {
+				throw new Exception("Cannot proceed: User with this username alreadt exists");
+			}	
+		}
+		else {
+			throw new Exception("Cannot proceed: Username cannot be null");
+			//new UserAlreadyExistException("User already exist");
+		}
 	}
 	
 	@GetMapping("/getusers")
