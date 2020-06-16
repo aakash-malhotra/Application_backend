@@ -1,9 +1,11 @@
 package com.example.demo.model;
 
 
+import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -12,6 +14,9 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "login_details")
@@ -40,8 +45,9 @@ public class Login {
 	@Column(name="email")
 	private String email;
 	
-
-	@ManyToMany
+	@JsonIgnoreProperties(value = {"user","hibernateLazyInitializer", "handler"})
+	//@JsonManagedReference
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role",
 				joinColumns = @JoinColumn(name="username"),
 				inverseJoinColumns = @JoinColumn(name="role_id"))

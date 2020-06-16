@@ -2,6 +2,7 @@
 package com.example.demo.model;
  
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -12,6 +13,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="role")
@@ -24,6 +29,8 @@ public class Role {
 	
 	private String roleName;
 	
+	@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler","roles"})
+	//@JsonBackReference
 	@ManyToMany(mappedBy = "roles")
 	private Collection<Login> user;
 
@@ -34,7 +41,7 @@ public class Role {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-
+	
 	public Collection<Login> getUser() {
 		return user;
 	}

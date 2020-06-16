@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,7 @@ import net.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
 
 @Entity
 @Table(name="server_details")
-public class serverDb {
+public class serverDb implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

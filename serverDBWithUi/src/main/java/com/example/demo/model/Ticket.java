@@ -13,7 +13,10 @@ import javax.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
 @Entity
 @Table(name = "ticket_details")
@@ -33,21 +36,38 @@ public class Ticket extends AuditForIssuedAtModel{
 	@Column(name="branch")
 	private String branch;
 	
+	@Column(name="ticketId")
+	private String ticketId;
+	
+	@JsonIgnoreProperties(value = {"user","hibernateLazyInitializer"})
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name="empid",nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+    private Login user;
+
+	/*
 	@Column(name="emailId")
 	private String emailId;
 	
 	@Column(name="mobile")
 	private String mobile;
 	
-	@Column(name="ticketId")
-	private String ticketId;
-	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name="empid",nullable = false)
-	@OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-	private Login user;
+	public String getEmailId() {
+		return emailId;
+	}
 
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+*/
 	public String getCategory() {
 		return category;
 	}
@@ -72,22 +92,6 @@ public class Ticket extends AuditForIssuedAtModel{
 		this.branch = branch;
 	}
 
-	public String getEmailId() {
-		return emailId;
-	}
-
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
-
-	public String getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-
 	public String getTicketId() {
 		return ticketId;
 	}
@@ -106,25 +110,18 @@ public class Ticket extends AuditForIssuedAtModel{
 
 	public Ticket() {}
 
-	public Ticket(String category, String description, String branch, String emailId, String mobile, String ticketId,
-			Login user) {
+	public Ticket(String category, String description, String branch, String ticketId, Login user) {
 		super();
 		this.category = category;
 		this.description = description;
 		this.branch = branch;
-		this.emailId = emailId;
-		this.mobile = mobile;
 		this.ticketId = ticketId;
 		this.user = user;
 	}
 
 	@Override
 	public String toString() {
-		return "Ticket [sno=" + sno + ", category=" + category + ", description=" + description + ", branch=" + branch
-				+ ", emailId=" + emailId + ", mobile=" + mobile + ", ticketId=" + ticketId + ", user=" + user + "]";
+		return "Ticket [sno=" + sno + ", category=" + category + ", description=" + description + 
+				", branch=" + branch +", ticketId=" + ticketId + ", user=" + user + "]";
 	}
-	
-	
-	
-
 }
