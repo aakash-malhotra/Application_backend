@@ -1,5 +1,6 @@
 package com.example.demo.restcontroller;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,7 +22,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.dao.TicketRepo;
 import com.example.demo.dao.LoginRepo;
 import com.example.demo.model.Ticket;
+import com.example.demo.service.ConvertJsonToCsv;
 import com.example.demo.service.ResourceNotFoundException;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 
 @Controller
 @CrossOrigin(origins = "*")
@@ -36,7 +40,8 @@ public class TicketController {
 	
 	@GetMapping("/getAll")
 	@ResponseBody
-	public Iterable<Ticket> getAllTickets(){
+	public Iterable<Ticket> getAllTickets() throws JsonParseException, JsonMappingException, IOException{
+		//ConvertJsonToCsv.ReadJsonOutput(repo.findAll());
 		return repo.findAll();
 	}
 	

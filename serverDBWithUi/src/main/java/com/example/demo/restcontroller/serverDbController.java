@@ -1,8 +1,13 @@
 package com.example.demo.restcontroller;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,6 +21,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.dao.serverDbRepo;
 import com.example.demo.model.StringResponse;
 import com.example.demo.model.serverDb;
+import com.example.demo.service.ConvertJsonToCsv;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonArrayFormatVisitor;
 
 @Controller
 @CrossOrigin(origins = "*")
@@ -74,10 +85,10 @@ public class serverDbController {
 	
 	@RequestMapping("/servers")
 	@ResponseBody
-	public List<serverDb> getServers() {
+	public List<serverDb> getServers() throws JsonParseException, JsonMappingException, IOException {
 		System.out.println("inside servers");
+		//ConvertJsonToCsv.ReadJsonOutput(repo.findAll());
 		return repo.findAll();
-		
 	}
 	
 	@DeleteMapping("/deleteServer/{sno}")
