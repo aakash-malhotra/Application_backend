@@ -59,6 +59,13 @@ public class loginController {
 		return user;
 	}
 	
+	@GetMapping("/get/{username}")
+	@ResponseBody
+	public Login getUser(@PathVariable(value = "username") String username) {
+		Login user=repo.findByUsername(username);
+		return user;
+	}
+	
 	/*@GetMapping("/get/{username}")
 	@ResponseBody
 	public List<Login> getUser(@PathVariable(value = "username") String username) {

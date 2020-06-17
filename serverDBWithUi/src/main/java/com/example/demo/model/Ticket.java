@@ -39,7 +39,8 @@ public class Ticket extends AuditForIssuedAtModel{
 	@Column(name="ticketId")
 	private String ticketId;
 	
-	@JsonIgnoreProperties(value = {"user","hibernateLazyInitializer"})
+	@JsonIgnore
+	//@JsonIgnoreProperties(value = {"user","hibernateLazyInitializer"})
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name="empid",nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
