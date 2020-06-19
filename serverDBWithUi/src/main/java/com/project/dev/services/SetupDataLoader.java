@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.project.dev.services;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,10 +10,11 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.demo.dao.LoginRepo;
-import com.example.demo.dao.RoleRepository;
-import com.example.demo.model.Login;
-import com.example.demo.model.Role;
+import com.project.dev.dao.LoginRepo;
+import com.project.dev.dao.RoleRepository;
+import com.project.dev.models.Login;
+import com.project.dev.models.Role;
+
 
 @Component
 public class SetupDataLoader implements ApplicationListener<ContextRefreshedEvent>  {

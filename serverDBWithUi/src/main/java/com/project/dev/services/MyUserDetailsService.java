@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.project.dev.services;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,9 +13,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dao.LoginRepo;
-import com.example.demo.model.Login;
-import com.example.demo.model.Role;
+import com.project.dev.dao.LoginRepo;
+import com.project.dev.models.Login;
+import com.project.dev.models.Role;
+
+
 
 @Service("userDetailsService")
 public class MyUserDetailsService implements UserDetailsService {

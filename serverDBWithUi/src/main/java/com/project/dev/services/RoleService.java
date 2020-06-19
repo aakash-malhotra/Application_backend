@@ -1,10 +1,10 @@
-package com.example.demo.service;
+package com.project.dev.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dao.RoleRepository;
-import com.example.demo.model.Role;
+import com.project.dev.dao.RoleRepository;
+import com.project.dev.models.Role;
 
 @Service
 public class RoleService{

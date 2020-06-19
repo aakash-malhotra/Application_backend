@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.project.dev.services;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

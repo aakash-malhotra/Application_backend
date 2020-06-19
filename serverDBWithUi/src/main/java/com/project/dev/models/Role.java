@@ -1,5 +1,5 @@
 
-package com.example.demo.model;
+package com.project.dev.models;
  
 
 import java.io.Serializable;

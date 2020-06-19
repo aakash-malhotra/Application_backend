@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.project.dev.services;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,8 +9,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.example.demo.model.Login;
-import com.example.demo.model.Role;
+import com.project.dev.models.Login;
+import com.project.dev.models.Role;
 
 public class UserPrincipal implements UserDetails {
 

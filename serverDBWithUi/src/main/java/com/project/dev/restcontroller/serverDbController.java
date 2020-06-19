@@ -1,4 +1,4 @@
-package com.example.demo.restcontroller;
+package com.project.dev.restcontroller;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.demo.dao.serverDbRepo;
-import com.example.demo.model.StringResponse;
-import com.example.demo.model.serverDb;
-import com.example.demo.service.ConvertJsonToCsv;
+
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonArrayFormatVisitor;
+import com.project.dev.dao.serverDbRepo;
+import com.project.dev.models.StringResponse;
+import com.project.dev.models.serverDb;
 
 @Controller
 @CrossOrigin(origins = "*")
@@ -108,6 +108,5 @@ public class serverDbController {
 		return repo.findById(sno);
 		
 	}
-	
 	
 }

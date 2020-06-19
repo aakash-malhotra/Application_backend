@@ -1,4 +1,4 @@
-package com.example.demo.restcontroller;
+package com.project.dev.restcontroller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.dao.LoginRepo;
-import com.example.demo.model.Login;
-import com.example.demo.model.StringResponse;
+import com.project.dev.dao.LoginRepo;
+import com.project.dev.models.Login;
+import com.project.dev.models.StringResponse;
+
+
 
 @RestController
 @CrossOrigin(origins = "*")
