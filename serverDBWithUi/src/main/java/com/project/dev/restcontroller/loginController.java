@@ -26,7 +26,10 @@ public class loginController {
 	@ResponseBody
 	public StringResponse doLogin() {
 		StringResponse resp=new StringResponse(); 
-		resp.setResponse("Successful");
+		if(true)
+			resp.setResponse("Successful");
+		else
+			resp.setResponse("Failed");
 		return resp;
 	}
 	

@@ -21,7 +21,7 @@ public final class ConvertJsonToCsv {
 	 public static void JsonToCsv(File jsonFile, File csvFile) throws IOException {
 	        JsonNode jsonTree = new ObjectMapper().readTree(jsonFile);
 	        String s=new String();
-	        s.
+	        
 	        Builder csvSchemaBuilder = CsvSchema.builder();
 	        JsonNode firstObject = jsonTree.elements().next();
 	        System.out.println(firstObject);
